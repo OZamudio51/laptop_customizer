@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import CartTotalAmount from './CartTotalAmount/CartTotalAmount';
-import SummaryItems from './SummaryItems/SummaryItems';
 import OptionsForm from './OptionsForm/OptionsForm';
+import SectionList from './SectionList/SectionList';
+import FEATURES from './FEATURES';
 
 
 class App extends Component {
@@ -26,9 +26,11 @@ class App extends Component {
         name: '15.6" UHD (3840 x 2160) 60Hz Bright Lights and Knobs',
         cost: 1500
       }
-    }
+    },
   }
 };
+
+
 
   updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
@@ -46,14 +48,10 @@ class App extends Component {
         </header>
         <main>
           <OptionsForm
-            features={this.props.features}
+            features={FEATURES}
             selected={this.state.selected}
             onUpdateFeature={this.updateFeature}/>
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            <SummaryItems selected={this.state.selected} />
-            <CartTotalAmount selected={this.state.selected} />
-          </section>
+            <SectionList selected={this.state.selected}/>
         </main>
       </div>
     );
